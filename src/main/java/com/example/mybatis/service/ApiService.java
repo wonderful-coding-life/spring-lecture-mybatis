@@ -6,11 +6,8 @@ import com.example.mybatis.mapper.CompanyMapper;
 import com.example.mybatis.mapper.EmployeeMapper;
 import com.example.mybatis.model.Employee;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
