@@ -3,7 +3,10 @@ package com.example.mybatis.controller;
 import com.example.mybatis.mapper.EmployeeMapper;
 import com.example.mybatis.model.Employee;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -18,6 +21,10 @@ public class EmployeeController {
     }
     @GetMapping("/{id}")
     public Employee getEmployeeById(@PathVariable int id) {
+        var employee = employeeMapper.selectById(id);
+        if (employee == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         return employeeMapper.selectById(id);
     }
     @PostMapping

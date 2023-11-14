@@ -17,4 +17,6 @@ public interface EmployeeMapper {
     int update(Employee employee);
     @Delete("DELETE FROM employee WHERE id=#{id}")
     int delete(int id);
+    @Select("SELECT COUNT(*) FROM employee")
+    int count();
 }
