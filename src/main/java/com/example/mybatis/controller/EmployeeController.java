@@ -1,6 +1,7 @@
 package com.example.mybatis.controller;
 
 import com.example.mybatis.mapper.EmployeeMapper;
+import com.example.mybatis.mapper.XmlEmployeeMapper;
 import com.example.mybatis.model.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmployeeController {
     private final EmployeeMapper employeeMapper;
+    private final XmlEmployeeMapper xmlEmployeeMapper;
+
     @GetMapping
-    public List<Employee> getEmployees() {
-        return employeeMapper.selectAll();
+    public List<Employee> getEmployees(@RequestParam(required = false) String orderBy) {
+        return xmlEmployeeMapper.selectAll(orderBy);
     }
     @GetMapping("/{id}")
     public Employee getEmployeeById(@PathVariable int id) {
-        var employee = employeeMapper.selectById(id);
+        var employee = xmlEmployeeMapper.selectById(id);
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
