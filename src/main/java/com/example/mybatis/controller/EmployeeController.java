@@ -4,6 +4,7 @@ import com.example.mybatis.mapper.EmployeeMapper;
 import com.example.mybatis.mapper.XmlEmployeeMapper;
 import com.example.mybatis.model.Employee;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 @RequiredArgsConstructor
+@Slf4j
 public class EmployeeController {
     private final EmployeeMapper employeeMapper;
     private final XmlEmployeeMapper xmlEmployeeMapper;
