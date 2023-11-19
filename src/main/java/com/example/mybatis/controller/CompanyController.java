@@ -31,12 +31,13 @@ public class CompanyController {
         companyMapper.insert(company);
         return company;
     }
-    @PutMapping
-    public Company putCompany(@RequestBody Company company) {
+    @PutMapping("/{id}")
+    public Company putCompany(@PathVariable int id, @RequestBody Company company) {
+        company.setId(id);
         companyMapper.update(company);
         return company;
     }
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteCompany(@PathVariable int id) {
         companyMapper.delete(id);
     }

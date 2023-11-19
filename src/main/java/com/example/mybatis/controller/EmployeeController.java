@@ -35,12 +35,13 @@ public class EmployeeController {
         employeeMapper.insert(employee);
         return employee;
     }
-    @PutMapping
-    public Employee putEmployee(@RequestBody Employee employee) {
+    @PutMapping("/{id}")
+    public Employee putEmployee(@PathVariable int id, @RequestBody Employee employee) {
+        employee.setId(id);
         employeeMapper.update(employee);
         return employee;
     }
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteEmployee(@PathVariable int id) {
         employeeMapper.delete(id);
     }
