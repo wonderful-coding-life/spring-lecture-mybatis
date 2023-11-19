@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/companies")
 @RequiredArgsConstructor
 public class CompanyController {
     private final CompanyMapper companyMapper;
