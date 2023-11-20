@@ -1,6 +1,7 @@
 package com.example.mybatis.mapper;
 
 import com.example.mybatis.model.Company;
+import com.example.mybatis.model.Employee;
 import org.apache.ibatis.annotations.*;
 import java.util.List;
 
@@ -10,6 +11,8 @@ public interface CompanyMapper {
     List<Company> selectAll();
     @Select("SELECT * FROM company WHERE id=#{id}")
     Company selectById(int id);
+    @Select("SELECT * FROM employee WHERE company=#{id}")
+    List<Employee> selectEmployeesById(int id);
     @Insert("INSERT INTO company(name, address) VALUES(#{name}, #{address})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Company employee);

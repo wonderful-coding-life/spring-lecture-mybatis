@@ -1,7 +1,9 @@
 package com.example.mybatis.controller;
 
 import com.example.mybatis.mapper.CompanyMapper;
+import com.example.mybatis.mapper.EmployeeMapper;
 import com.example.mybatis.model.Company;
+import com.example.mybatis.model.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,10 @@ public class CompanyController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return companyMapper.selectById(id);
+    }
+    @GetMapping("/{id}/employees")
+    public List<Employee> getEmployeesByCompanyId(@PathVariable int id) {
+        return companyMapper.selectEmployeesById(id);
     }
     @PostMapping
     public Company postCompany(@RequestBody Company company) {
